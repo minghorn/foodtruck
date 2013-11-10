@@ -27,7 +27,7 @@
           #map-canvas { height: 100%; width: 75%;}
           #sidebar { width: 25%; float: right;}
           #search-basic  {   
-			border: 1px solid #7f8c8d;
+			border: 1px 1px 1px 0px solid #7f8c8d;
 			font: bold 12px Arial,Helvetica,Sans-serif;
 			color: #7f8c8d;
 			width: 100%;
@@ -41,6 +41,7 @@
 			-o-transition: all 0.7s ease 0s;
 			transition: all 0.7s ease 0s;
 			}
+
 		  select {
 			-webkit-appearance: button;
 			  -webkit-border-radius: 2px;
@@ -83,13 +84,15 @@
 			}
 </style>
 
+<!--<script>
+$(document).ready(function(){
+	if("select option:selected").value() = 1 {
+		
+};
+</script>-->
+
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <!-- Add your site or application content here -->
   		<div id="sidebar">
   		<center>
         	<label for="search-basic"></label>
@@ -99,13 +102,13 @@
 				<option value="2">10 NEAREST</option>
 				<option value="4">15 NEAREST</option>
 			</select>
+		</div>
 		</center>
         </div>
         
         
         <!-- Google maps -->
         <div id="map-canvas"/>
-
         
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
