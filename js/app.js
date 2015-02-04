@@ -26,7 +26,7 @@ var app = function(data){
           var hold = [];
           //for each truck find the distance from your position to the truck if longitude exists
           for (var i = 0; i < data.length; i++) {
-            if(data[i].longitude != undefined){
+            if(data[i].longitude != undefined && data[i].latitude != undefined){
               all[i] = distance(data[i].longitude, data[i].latitude, lon, lat);
             }
           }
@@ -35,21 +35,21 @@ var app = function(data){
             hold[m] = all[m];
           }
           //TO DO: SORT HOLD ARRAY BY DISTANCE TO YOU
-
+          hold.sort();
           //compares the hold array to the all array. the amt is the number of results wanted. not sure what this does but we want to push the number of results wanted from the hold array to the nearest array
-          for(var j = 0; j < amt; j++){
+          for(var j = 0; j < amt+1; j++){
             for (var k = 0; k < all.length; k++) {
               if(hold[j] == all[k]){
                   nearest[nearest.length] = k;
                 }
               };      
           }
+          console.log(nearest);
           //create result array, from the nearest array for each element push the data value to the result array. basically the nearest array is replicated to the result array
           var result = [];
           nearest.forEach(function(value){
             result.push(data[value]);
           });
-          console.log(result);
           return result;
   };
 
