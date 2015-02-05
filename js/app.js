@@ -35,7 +35,7 @@ var app = function(data){
             hold[m] = all[m];
           }
           //TO DO: SORT HOLD ARRAY BY DISTANCE TO YOU
-          hold.sort();
+          //hold.sort();
           //compares the hold array to the all array. the amt is the number of results wanted. not sure what this does but we want to push the number of results wanted from the hold array to the nearest array
           for(var j = 0; j < amt+1; j++){
             for (var k = 0; k < all.length; k++) {
@@ -73,7 +73,8 @@ var app = function(data){
 
 //implement all the functions and update the info window for the sidebar
   nearestFoodTruckMarkers.forEach(function(truckData){
-    var infoWindowContent = '<b>'+ truckData.applicant + '</b> <br/>'+ truckData.address + '<br/>' + truckData.foodItems;
+    var infoWindowContent = '<b>'+ truckData.applicant + '</b> <br/>'+ truckData.address + '<br/>';
+    $("#sidebar").append(infoWindowContent);
     addMarker(truckData.latitude, truckData.longitude, infoWindowContent);
   });
 
