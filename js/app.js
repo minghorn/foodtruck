@@ -34,18 +34,15 @@ var app = function(data){
           for(var m = 0; m < all.length; m++){
             hold[m] = all[m];
           }
-          //TO DO: SORT HOLD ARRAY BY DISTANCE TO YOU
-          //hold.sort();
-          //compares the hold array to the all array. the amt is the number of results wanted. not sure what this does but we want to push the number of results wanted from the hold array to the nearest array
-          for(var j = 0; j < amt+1; j++){
-            for (var k = 0; k < all.length; k++) {
-              if(hold[j] == all[k]){
-                  nearest[nearest.length] = k;
-                }
-              };      
+          //sorts the hold array from lowest to highest
+          hold.sort(function(a,b){return a-b});
+
+          //compares the hold array to the all array. the amt is the number of results wanted. push the 
+          for(var j = 0; j < amt; j++){
+            nearest.push(hold[j]); 
           }
-          console.log(nearest);
-          //create result array, from the nearest array for each element push the data value to the result array. basically the nearest array is replicated to the result array
+
+          //create result array, from the nearest array for each element push the data value to the result array. basically the nearest array is replicated to the result array but the result array holds the information about the truck
           var result = [];
           nearest.forEach(function(value){
             result.push(data[value]);
@@ -53,29 +50,27 @@ var app = function(data){
           return result;
   };
 
-//add google maps marker
-  function addMarker(lat, lon, contentString) {
-    var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(lat,lon),
-        map: map
-      });
-//create info windows for the markers on the map
-    var infoWindow = new google.maps.InfoWindow({
-      content: contentString
-    });
-//open the info window when the marker is clicked
-	  google.maps.event.addListener(marker, 'click', function() {
-	    infoWindow.open(map,marker);
-	   });
-  };
-
   var nearestFoodTruckMarkers = findNearest(data[1].latitude, data[1].longitude, 5);
 
-//implement all the functions and update the info window for the sidebar
-  nearestFoodTruckMarkers.forEach(function(truckData){
-    var infoWindowContent = '<b>'+ truckData.applicant + '</b> <br/>'+ truckData.address + '<br/>';
-    $("#sidebar").append(infoWindowContent);
-    addMarker(truckData.latitude, truckData.longitude, infoWindowContent);
-  });
-
+  //implement all the functions and update the info window for the sidebar
+    nearestFoodTruckMarkers.forEach(function(truckData){
+      var infoWindowContent = '<b>'+ truckData.applicant + '</b> <br/>'+ truckData.address + '<br/>';
+      $("#sidebar").append(infoWindowContent);
+      addMarker(truckData.latitude, truckData.longitude, infoWindowContent);
+    });
+  //add google maps marker
+    function addMarker(lat, lon, contentString) {
+      var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(lat,lon),
+          map: map
+        });
+  //create info windows for the markers on the map
+      var infoWindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+  //open the info window when the marker is clicked
+  	  google.maps.event.addListener(marker, 'click', function() {
+  	    infoWindow.open(map,marker);
+  	   });
+    };
 }

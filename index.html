@@ -24,7 +24,7 @@
         <style type="text/css">
           html { height: 100% }
           body { height: 100%; margin: 0; padding: 0 }
-          #map-canvas { height: 100%; width: 75%;}
+          #map-canvas { height: 100%; width: 75%; position: fixed;}
           #sidebar { width: 25%; float: right; overflow: auto;}
           #search-basic  {   
 			border: 1px 1px 1px 0px solid #7f8c8d;
@@ -105,11 +105,10 @@ $(document).ready(function(){
 		</div>
 		</center>
         </div>
-        
+
         
         <!-- Google maps -->
         <div id="map-canvas"/>
-        
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
