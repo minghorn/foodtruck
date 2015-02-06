@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html> 
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
@@ -84,22 +79,26 @@
 			}
 </style>
 
-<script>
-$("#select1").change(function(){
-	if($("#select1 option:selected").val() == 5){
-		
-	}
-	else if($("#select1 option:selected").val() == 10){
-
-	}
-	else if($("#select1 option:selected").val() == 15){
-		
-	}
-}
-</script>
-
-    </head>
+</head>
     <body>
+    	<script type = "jquery.js">
+    	$(document).ready(function(){
+			$("select#select1").change(function(){
+				if($("#select1 option:selected").val() == 5){
+					var nearestFoodTruckMarkers = findNearest(data[1].latitude, data[1].longitude, 5);
+					console.log("changed 5");
+				}
+				else if($("#select1 option:selected").val() == 10){
+					var nearestFoodTruckMarkers = findNearest(data[1].latitude, data[1].longitude, 10);
+					console.log("changed 10");
+				}
+				else if($("#select1 option:selected").val() == 15){
+					var nearestFoodTruckMarkers = findNearest(data[1].latitude, data[1].longitude, 15);
+					console.log("changed 15");
+				}
+				})
+			});
+		</script>
   		<div id="sidebar">
   		<center>
         	<label for="search-basic"></label>
