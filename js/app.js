@@ -26,13 +26,13 @@ var app = function(data){
           var hold = [];
           //trying to remove duplicates from the dataset DOESNT WORK YET
           for(var i = 0; i < data.length; i++){
-            for(var j = 1; j < data.length; j++){
+            for(var j = i+1; j < data.length; j++){
               if(data[i].applicant == data[j].applicant){
-                data.remove(i)
+                data.splice(j,"");
               }              
             }
-
           }
+
           //for each truck find the distance from your position to the truck if longitude exists
           for (var i = 0; i < data.length; i++) {
             if(data[i].longitude != undefined && data[i].latitude != undefined){
